@@ -1,6 +1,108 @@
 {% extends "layout.html" %}
 
+{% block title %}Canvas Assignments | My Planner{% endblock %}
+
 {% block content %}
-<h1 class="mb-4">Welcome to Canvas!</h1>
-<p>This is your Flask home page using Bootstrap and partials.</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <!-- Flash messages -->
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, msg in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ msg }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+
+            <!-- Instructions -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h2 class="fw-bold">Connect to Canvas</h2>
+                    <p class="text-muted">Use your Canvas API URL and Access Token to load your assignments.</p>
+
+                    <h5>How to get your API Token:</h5>
+                    <ol>
+                        <li>Go to: <code>https://csumb.instructure.com</code></li>
+                        <li>Click <strong>Account → Settings</strong></li>
+                        <li>Scroll to <strong>Approved Integrations</strong></li>
+                        <li>Create a new access token</li>
+                        <li>Copy it and paste below</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Input Form -->
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <h4 class="fw-semibold">Enter Canvas Credentials</h4>
+
+                    <form method="POST" action="{{ url_for('canvas.canvas_page') }}">
+
+                        <div class="mb-3">
+                            <label class="form-label">Canvas API URL</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="api_url"
+                                placeholder="https://csumb.instructure.com"
+                                value="{{ request.form.api_url or 'https://csumb.instructure.com' }}"
+                                required
+                            >
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Access Token</label>
+                            <input
+                                type="password"
+                                class="form-control"
+                                name="api_key"
+                                placeholder="Paste your token here"
+                                required
+                            >
+                        </div>
+
+                        <button class="btn btn-dark" type="submit">
+                            Load Assignments
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Assignment List -->
+            {% if assignments %}
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h4 class="fw-semibold mb-3">Upcoming Assignments</h4>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Course</th>
+                                <th>Assignment</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in assignments %}
+                            <tr>
+                                <td>{{ a.course_name }}</td>
+                                <td>{{ a.assignment_name }}</td>
+                                <td>{{ a.due_date.strftime('%b %d, %Y %I:%M %p') }} UTC</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
 {% endblock %}

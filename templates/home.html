@@ -1,6 +1,66 @@
 {% extends "layout.html" %}
 
+{% block title %}Welcome | My Planner{% endblock %}
+
 {% block content %}
-<h1 class="mb-4">Welcome!</h1>
-<p>This is your Flask home page using Bootstrap and partials.</p>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-4">
+                    <h1 class="fw-bold mb-3">Welcome to My Planner</h1>
+                    <p class="text-muted">
+                        This app helps you manage your time, study, and focus using:
+                    </p>
+                    <ul>
+                        <li><strong>Weekly Planner</strong> – schedule classes, homework, and events.</li>
+                        <li><strong>Spotify</strong> – play focus or study playlists while you work.</li>
+                        <li><strong>Canvas</strong> – keep an eye on assignments and due dates.</li>
+                        <li><strong>Pomodoro Timer</strong> – stay productive with timed focus sessions.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h4 class="fw-semibold mt-3">How to navigate</h4>
+                    <ol>
+                        <li>
+                            Click <strong>Planner</strong> in the top-right nav bar, or use the button below
+                            to open your weekly planner view.
+                        </li>
+                        <li>
+                            Use the <strong>Spotify</strong> tab to open the music integration page.
+                        </li>
+                        <li>
+                            Use the <strong>Canvas</strong> tab to see assignments and course links.
+                        </li>
+                        <li>
+                            Use the <strong>Pomodoro Timer</strong> tab to start focused work sessions.
+                        </li>
+                    </ol>
+
+                    <div class="mt-4">
+                        <a href="{{ url_for('planner') }}" class="btn btn-dark">
+                            Go to Planner
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4">
+                    <h4 class="fw-semibold mb-3">Tips for using this planner</h4>
+                    <ul class="mb-0">
+                        <li>Block off your <strong>class times</strong> first in the planner.</li>
+                        <li>Add <strong>study blocks</strong> before big exams or project deadlines.</li>
+                        <li>Use the <strong>Pomodoro Timer</strong> for intense focus sessions.</li>
+                        <li>Keep <strong>Spotify</strong> open with a chill or lo-fi playlist while you work.</li>
+                        <li>Check <strong>Canvas</strong> at least once a day for new assignments.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

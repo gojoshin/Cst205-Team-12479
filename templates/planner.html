@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}Weekly Planner | My Planner{% endblock %}
+
+{% block content %}
+<div class="container planner-container">
+
+    <div class="planner-header">
+        <h1 class="fw-bold">Weekly Planner</h1>
+        <div class="btn-group">
+            <button class="btn btn-outline-secondary btn-sm">&laquo; Prev</button>
+            <button class="btn btn-outline-secondary btn-sm">This Week</button>
+            <button class="btn btn-outline-secondary btn-sm">Next &raquo;</button>
+        </div>
+    </div>
+
+    <p class="text-muted">Week of [Insert Date Range]</p>
+
+    <div class="planner-table-wrapper">
+        <div class="planner-scroll">
+            <table class="table table-bordered planner-table">
+                <thead>
+                    <tr>
+                        <th class="time-col"></th>
+                        <th>Mon</th>
+                        <th>Tue</th>
+                        <th>Wed</th>
+                        <th>Thu</th>
+                        <th>Fri</th>
+                        <th>Sat</th>
+                        <th>Sun</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set hours = [8,9,10,11,12,13,14,15,16,17,18] %}
+                    {% for h in hours %}
+                    <tr>
+                        <td class="time-col">{{ "%d:00"|format(h if h <= 12 else h-12) }}</td>
+
+                        <td class="planner-slot" data-day="mon" data-time="{{h}}:00"></td>
+                        <td class="planner-slot" data-day="tue" data-time="{{h}}:00"></td>
+                        <td class="planner-slot" data-day="wed" data-time="{{h}}:00"></td>
+                        <td class="planner-slot" data-day="thu" data-time="{{h}}:00"></td>
+                        <td class="planner-slot" data-day="fri" data-time="{{h}}:00"></td>
+                        <td class="planner-slot" data-day="sat" data-time="{{h}}:00"></td>
+                        <td class="planner-slot" data-day="sun" data-time="{{h}}:00"></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
