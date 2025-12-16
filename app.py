@@ -8,7 +8,7 @@ from routes.pomodoro import pomodoro_bp
 from routes.spotify import spotify_bp
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret-key-change-me")
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "testing")
 
 
 @app.route("/")
@@ -28,3 +28,4 @@ app.register_blueprint(spotify_bp)
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  # 5000 for local
     app.run(host="0.0.0.0", port=port, debug=True)
+
