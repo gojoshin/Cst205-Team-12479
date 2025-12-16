@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>Student Dashboard</title>
+ <style>
+   body {
+     margin: 0;
+     display: grid;
+     grid-template-rows: 1fr 1fr;  
+     grid-template-columns: 1fr 1fr;
+     height: 100vh;
+   }
+   iframe {
+     width: 100%;
+     height: 100%;
+     border: none;
+   }
+   #planner {
+     grid-column: 1 / span 2; 
+     grid-row: 1;
+   }
+   #spotify {
+     grid-column: 1;
+     grid-row: 2;
+   }
+   #pomodoro {
+     grid-column: 2;
+     grid-row: 2;
+   }
+ </style>
+</head>
+<body>
+ <div id="planner">
+   <iframe src="https://tweek.so/""
+           title=" Planner"></iframe>
+ </div>
+
+ <iframe id="spotify"
+         style="border-radius:12px"
+         src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
+         width="100%" height="100%" frameborder="0"
+         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+         loading="lazy"></iframe>
+
+ <iframe id="pomodoro"
+         src="https://pomofocus.io/"
+         title="Pomofocus Timer"
+         allow="fullscreen"
+         loading="lazy"></iframe>
+</body>
+</html>
