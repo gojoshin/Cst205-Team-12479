@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Student Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      display: grid;
+      grid-template-rows: auto 65% 35%;  
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block; 
+    }
+    #navbar {
+      grid-column: 1 / span 2;
+      grid-row: 1;
+      background: #333;
+      color: white;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+    }
+    #navbar button {
+      background: #4CAF50;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      margin-right: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+    #navbar button:hover {
+      background: #45a049;
+    }
+    #planner {
+      grid-column: 1 / span 2;
+      grid-row: 2;
+    }
+    #spotify {
+      grid-column: 1;
+      grid-row: 3;
+    }
+    #pomodoro {
+      grid-column: 2;
+      grid-row: 3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation bar -->
+  <div id="navbar">
+    <button onclick="window.location.href='/canvas'">Canvas</button>
+    <span>Student Dashboard</span>
+  </div>
+
+  <!-- Planner -->
+  <div id="planner">
+    <iframe src="https://tweek.so/"
+            title="Planner"></iframe>
+  </div>
+
+  <!-- Spotify -->
+  <iframe id="spotify"
+          style="border-radius:12px"
+          src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"></iframe>
+
+  <!-- Pomofocus -->
+  <iframe id="pomodoro"
+          src="https://pomofocus.io/"
+          title="Pomofocus Timer"
+          allow="fullscreen"
+          loading="lazy"></iframe>
+</body>
+</html>
